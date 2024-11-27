@@ -1,5 +1,5 @@
 {
-  "name": "express-log-smith",
+  "name": "@mccann-hub/express-log-smith",
   "version": "0.0.0",
   "main": "./dist/cjs/index.js",
   "scripts": {
@@ -17,6 +17,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/express": "^5.0.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "^22.10.0",
     "@typescript-eslint/eslint-plugin": "^8.16.0",
@@ -48,5 +49,8 @@
   "bugs": {
     "url": "https://github.com/McCann-Hub/express-log-smith/issues"
   },
-  "homepage": "https://github.com/McCann-Hub/express-log-smith#readme"
+  "homepage": "https://github.com/McCann-Hub/express-log-smith#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
 }
