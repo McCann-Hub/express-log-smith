@@ -12,7 +12,8 @@
     "@models/IRequest": "./src/models/IRequest.ts",
     "@utils/": "./src/utils/",
     "@std/assert": "jsr:@std/assert@1",
-    "express": "npm:express@^4.21.1"
+    "express": "npm:express@^4.21.1",
+    "morgan": "npm:morgan@^1.10.0"
   },
   "lint": {
     "include": ["./src/"],
