@@ -3,7 +3,7 @@ import requestId from '../src/middlewares/request-id';
 import { Request, Response, NextFunction } from "express";
 import { createRequest, createResponse, MockRequest, MockResponse } from 'node-mocks-http'
 
-describe('requestId Middleware', () => {
+describe('requestId middleware', () => {
   let mockRequest: MockRequest<Request>;
   let mockResponse: MockResponse<Response>;
   const nextFunction: NextFunction = () => { }
