@@ -8,6 +8,9 @@
   "license": "MIT",
   "imports": {
     "@/": "./src/",
+    "@middlewares/dexter": "./src/middlewares/dexter.ts",
+    "@middlewares/request-id": "./src/middlewares/request-id.ts",
+    "@middlewares/request-logger": "./src/middlewares/request-logger.ts",
     "@models/ILogger": "./src/models/ILogger.ts",
     "@models/IRequest": "./src/models/IRequest.ts",
     "@utils/": "./src/utils/",
@@ -17,10 +20,16 @@
     "uuid": "npm:uuid@^11.0.3"
   },
   "lint": {
-    "include": ["./src/"],
-    "exclude": ["./tests/**/*.spec.ts"],
+    "include": [
+      "./src/"
+    ],
+    "exclude": [
+      "./tests/**/*.spec.ts"
+    ],
     "rules": {
-      "tags": ["recommended"]
+      "tags": [
+        "recommended"
+      ]
     }
   },
   "fmt": {
@@ -30,12 +39,22 @@
     "semiColons": true,
     "singleQuote": true,
     "proseWrap": "preserve",
-    "include": ["./src/"],
-    "exclude": ["./tests/**/*.spec.ts"]
+    "include": [
+      "./src/"
+    ],
+    "exclude": [
+      "./tests/**/*.spec.ts"
+    ]
   },
   "nodeModulesDir": "auto",
-  "exclude": ["./dist/"],
+  "exclude": [
+    "./dist/"
+  ],
   "publish": {
-    "include": ["./src/", "README.md", "deno.json"]
+    "include": [
+      "./src/",
+      "README.md",
+      "deno.json"
+    ]
   }
 }

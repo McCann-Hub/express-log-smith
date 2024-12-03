@@ -1,5 +1,4 @@
 import assert from 'assert';
-import { hello } from '../src/index';
 
 describe('Array', function () {
   describe('#indexOf()', function () {
@@ -9,10 +8,3 @@ describe('Array', function () {
   });
 });
 
-describe('Main', function () {
-  describe('#hello', function () {
-    it('should return "hello world!" when no value is passed', function () {
-      assert.equal(hello(), 'Hello world!');
-    });
-  });
-});
