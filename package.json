@@ -12,10 +12,25 @@
     "prebuild": "npm run clean",
     "lint": "eslint . --ext .ts,.js --fix"
   },
-  "keywords": [],
+  "keywords": [
+    "express",
+    "express-middleware",
+    "logging",
+    "structured-logging",
+    "request-logging",
+    "response-logging",
+    "correlation-id",
+    "trace-id",
+    "span-id",
+    "distributed-tracing",
+    "morgan",
+    "logger",
+    "observability",
+    "contextual-logger"
+  ],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "A middleware library for Express.js, providing structured request/response logging, unique ID generation, and contextual loggers for enhanced observability in your applications.",
   "devDependencies": {
     "@types/chai": "^5.0.1",
     "@types/express": "^5.0.0",
