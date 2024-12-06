@@ -26,7 +26,7 @@ morgan.token('spanId', function (req: IRequest) {
 // This method is not really needed here since
 // we already told to the logger that it should
 // print only error messages in test.
-const defaultSkip = (req: Request) => {
+const defaultSkip = (req: Request): boolean => {
   if (req.url === '/ping') return true;
 
   const env = process.env.NODE_ENV || 'development';
