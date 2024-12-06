@@ -1,8 +1,9 @@
 import process from 'node:process';
-import morgan, { TokenIndexer } from 'morgan';
-import { Request, Response } from 'express';
 import { ILogger } from '@models/ILogger';
 import { IRequest } from '@models/IRequest';
+import morgan, { TokenIndexer } from 'morgan';
+import { IncomingMessage, ServerResponse } from 'node:http';
+import { Request, RequestHandler, Response } from 'express';
 
 /*
  * Set up needed tokens
@@ -34,8 +35,8 @@ const defaultSkip = (req: Request) => {
 
 const boilerplateFormatter = (
   tokens: TokenIndexer,
-  req: IRequest,
-  res: Response,
+  req: IncomingMessage,
+  res: ServerResponse,
 ) => ({
   correlation_id: tokens.correlationId(req, res),
   trace_id: tokens.traceId(req, res),
@@ -56,13 +57,13 @@ const createStream = (logger: ILogger, label: string) => ({
  * @param {ILogger} logger - The logger instance to use for logging output.
  * @param {(req: Request) => boolean} [skip] - Custom skip function for conditional logging.
  * @returns {{
- *   requestMorgan: ReturnType<typeof morgan>,
- *   responseMorgan: ReturnType<typeof morgan>
+ *   requestMorgan: RequestHandler,
+ *   responseMorgan: RequestHandler
  * }} - An object containing the configured Morgan middlewares for requests and responses.
  */
 export default (logger: ILogger, skip = defaultSkip): {
-  requestMorgan: ReturnType<typeof morgan>;
-  responseMorgan: ReturnType<typeof morgan>;
+  requestMorgan: RequestHandler;
+  responseMorgan: RequestHandler;
 } => {
   // Build the morgan middleware
   return {
@@ -72,7 +73,11 @@ export default (logger: ILogger, skip = defaultSkip): {
       // defined inside the Morgan library.
       // You can create your custom token to show what do you want from a request.
       //"[:reqid] :method :url",
-      function (tokens: TokenIndexer, req: IRequest, res: Response) {
+      function (
+        tokens: TokenIndexer,
+        req: IncomingMessage,
+        res: ServerResponse,
+      ): string {
         return JSON.stringify({
           ...boilerplateFormatter(tokens, req, res),
           // https://docs.splunk.com/Documentation/CIM/6.0.0/User/Web
@@ -99,7 +104,11 @@ export default (logger: ILogger, skip = defaultSkip): {
       // defined inside the Morgan library.
       // You can create your custom token to show what do you want from a request.
       //"[:reqid] :status :res[content-length] - :response-time ms",
-      function (tokens: TokenIndexer, req: IRequest, res: Response) {
+      function (
+        tokens: TokenIndexer,
+        req: IncomingMessage,
+        res: ServerResponse,
+      ) {
         return JSON.stringify({
           ...boilerplateFormatter(tokens, req, res),
           status: Number.parseFloat(tokens.status(req, res) || '0.0'),
