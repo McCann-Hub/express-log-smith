@@ -41,7 +41,7 @@ function handleRequestId(
   request: Request,
   response: Response,
   config: IRequestIdConfig,
-  attributeName: keyof IRequest,
+  attributeName: keyof Pick<IRequest, 'correlationId' | 'traceId' | 'spanId'>,
 ): void {
   const { headerName, setHeader = true, generator = generateV4UUID } = config;
 
@@ -59,7 +59,7 @@ function handleRequestId(
   }
 
   // Dynamically add the ID to the request object
-  request[attributeName] = id;
+  (request as IRequest)[attributeName] = id;
 }
 
 /**
@@ -121,7 +121,7 @@ export default function requestId({
     /*
      * Span Id
      */
-    const incomingSpanId = request.get(span.headerName);
+    const incomingSpanId = (request as Request).get(span.headerName);
 
     if (incomingSpanId) {
       request[SPAN_ATTRIBUTE_NAME] = incomingSpanId;
