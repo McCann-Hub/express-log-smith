@@ -1,6 +1,6 @@
 {
   "name": "@mccann-hub/express-log-smith",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "publishConfig": {
     "access": "public"
   },
@@ -40,15 +40,15 @@
     "@types/mocha": "^10.0.10",
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.10.1",
-    "@types/sinon": "^17.0.3",
+    "@types/sinon": "^22.0.0",
     "@typescript-eslint/eslint-plugin": "^8.16.0",
     "@typescript-eslint/parser": "^8.16.0",
     "chai": "^5.1.2",
     "cross-env": "^7.0.3",
     "eslint": "^8.57.1",
-    "mocha": "^10.8.2",
+    "mocha": "^12.0.3",
     "node-mocks-http": "^1.16.1",
-    "sinon": "^19.0.2",
+    "sinon": "^22.1.0",
     "tsc-alias": "^1.8.10",
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.19.2",
@@ -75,8 +75,8 @@
   },
   "homepage": "https://github.com/McCann-Hub/express-log-smith#readme",
   "dependencies": {
-    "express": "^4.21.1",
-    "morgan": "^1.10.0",
-    "uuid": "^11.0.3"
+    "express": "^4.22.3",
+    "morgan": "^1.12.1",
+    "uuid": "^11.1.1"
   }
 }
