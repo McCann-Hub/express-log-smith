@@ -22,6 +22,12 @@ npm install @mccann-hub/express-log-smith
 
 ## Basic Usage
 
+The package ships ESM and CommonJS builds. From CommonJS, use the named exports:
+
+```javascript
+const { dexter, requestId, requestLogger } = require("@mccann-hub/express-log-smith");
+```
+
 A simple example integrating the middlewares into an Express.js application:
 
 ```typescript
